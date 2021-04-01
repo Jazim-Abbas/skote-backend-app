@@ -1,11 +1,14 @@
 const express = require("express");
 require("express-async-errors");
+const bodyParser = require("body-parser");
 
-const routes = require("./routes")
+const routes = require("./routes");
 const exceptionHandling = require("./middlewares/exception_handling");
 
 const app = express();
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api", routes);
 app.use(exceptionHandling);
 
