@@ -11,6 +11,18 @@ exports.createUser = async function (user) {
   return await _user.save();
 };
 
+exports.login = async function (email, password) {
+  const userInDb = await findUserByEmail(email);
+
+  if (userInDb && userInDb.isGoogleLogin)
+    throw new Exception.LoginFailed("Please use google service to login ..");
+
+  if (!userInDb || !(await userInDb.comparePassword(password)))
+    throw new Exception.CredentialsNotMatched();
+
+  return userInDb;
+};
+
 function findUserByEmail(email) {
   return User.findOne({ email });
 }
