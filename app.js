@@ -4,7 +4,9 @@ const bodyParser = require("body-parser");
 
 const routes = require("./routes");
 const exceptionHandling = require("./middlewares/exception_handling");
+const dbConnect = require("./db/connect");
 
+dbConnect();
 const app = express();
 
 app.use(bodyParser.json());
