@@ -13,7 +13,17 @@ async function login(req, res) {
   res.send(userFields);
 }
 
+async function passwordForget(req, res) {
+  const fields = await schemaValidate(
+    validation.passwordForgetSchema,
+    req.body
+  );
+  
+  res.send(fields);
+}
+
 module.exports = {
   register,
   login,
+  passwordForget,
 };
