@@ -7,6 +7,13 @@ async function register(req, res) {
   res.send(userFields);
 }
 
+async function login(req, res) {
+  const userFields = await schemaValidate(validation.loginSchema, req.body);
+
+  res.send(userFields);
+}
+
 module.exports = {
   register,
+  login,
 };
