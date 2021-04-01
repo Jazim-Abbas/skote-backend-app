@@ -14,6 +14,12 @@ class EmailExist extends HttpError {
   }
 }
 
+class EmailNotExists extends HttpError {
+  constructor(message) {
+    super(message, 400, "EMAIL_NOT_FOUND");
+  }
+}
+
 class NotFound extends HttpError {
   constructor(message) {
     super(message, 404, "NOT_FOUND");
@@ -55,4 +61,5 @@ module.exports = {
   NotFound,
   AccessDenied,
   LoginFailed,
+  EmailNotExists,
 };

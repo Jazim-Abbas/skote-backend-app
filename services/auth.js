@@ -23,6 +23,11 @@ exports.login = async function (email, password) {
   return userInDb;
 };
 
+exports.isEmailExists = async function (email) {
+  const userInDb = await findUserByEmail(email);
+  if (!userInDb) throw new Exception.EmailNotExists("Email is not exist");
+};
+
 function findUserByEmail(email) {
   return User.findOne({ email });
 }

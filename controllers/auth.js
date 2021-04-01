@@ -20,12 +20,12 @@ async function login(req, res) {
 }
 
 async function passwordForget(req, res) {
-  const fields = await schemaValidate(
+  const { email } = await schemaValidate(
     validation.passwordForgetSchema,
     req.body
   );
-
-  res.send(fields);
+  await authService.isEmailExists(email);
+  res.send("Check your email to change the password ...");
 }
 
 async function setTokenInUser(user) {
