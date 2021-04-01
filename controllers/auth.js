@@ -1,10 +1,12 @@
+const authService = require("../services/auth");
 const validation = require("../utils/validations/auth");
 const schemaValidate = require("../utils/validations/validate");
 
 async function register(req, res) {
-  const userFields = await schemaValidate(validation.registerSchema, req.body);
+  const fields = await schemaValidate(validation.registerSchema, req.body);
+  await authService.createUser(fields);
 
-  res.send(userFields);
+  res.send("Successfully created the user ...");
 }
 
 async function login(req, res) {
@@ -18,7 +20,7 @@ async function passwordForget(req, res) {
     validation.passwordForgetSchema,
     req.body
   );
-  
+
   res.send(fields);
 }
 
