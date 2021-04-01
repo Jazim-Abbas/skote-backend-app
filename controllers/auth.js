@@ -7,7 +7,6 @@ const schemaValidate = require("../utils/validations/validate");
 async function register(req, res) {
   const fields = await schemaValidate(validation.registerSchema, req.body);
   await authService.createUser(fields);
-
   res.send("Successfully created the user ...");
 }
 
@@ -30,7 +29,7 @@ async function passwordForget(req, res) {
 }
 
 async function setTokenInUser(user) {
-  const _user = { ...user._doc };
+  const _user = { ...user._doc, token: await user.generateToken() };
   return _omit(_user, "password", "__v");
 }
 
