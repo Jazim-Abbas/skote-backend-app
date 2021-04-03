@@ -25,7 +25,7 @@ async function passwordForget(req, res) {
     req.body
   );
   await authService.isEmailExists(email);
-  res.send("Check your email to change the password ...");
+  res.send({ message: "Check your email to change the password ..."});
 }
 
 async function setTokenInUser(user) {

@@ -68,3 +68,24 @@
     token: long_encrypted_string
 }
 ```
+
+## 4 _Forget Password_
+##### route:
+- the request type is _post_
+```sh
+/auth/password-forget
+```
+##### body:
+- this is the request body we have to set from the client side
+```
+{
+    email: string,
+}
+```
+##### response payload:
+- this is the data or payload this route returns as a response
+```
+{
+    message: string
+}
+```
