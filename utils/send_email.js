@@ -10,3 +10,12 @@ const transport = nodemailer.createTransport({
   },
 });
 
+function sendMail(email) {
+  return transport.sendMail({
+    to: email,
+    subject: "Please Verify your email",
+    text: "Verify ...",
+  });
+}
+
+module.exports = { sendMail };
