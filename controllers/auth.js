@@ -1,7 +1,6 @@
-const { omit: _omit } = require("underscore");
-
 const authService = require("../services/auth");
 const validation = require("../utils/validations/auth");
+const setTokenInUser = require("../utils/set_user_token");
 const schemaValidate = require("../utils/validations/validate");
 
 async function register(req, res) {
@@ -25,12 +24,7 @@ async function passwordForget(req, res) {
     req.body
   );
   await authService.isEmailExists(email);
-  res.send({ message: "Check your email to change the password ..."});
-}
-
-async function setTokenInUser(user) {
-  const _user = { ...user._doc, token: await user.generateToken() };
-  return _omit(_user, "password", "__v");
+  res.send({ message: "Check your email to change the password ..." });
 }
 
 module.exports = {
