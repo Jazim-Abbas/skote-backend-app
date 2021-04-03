@@ -42,3 +42,29 @@
     message: string
 }
 ```
+
+## 3 _Login_
+##### route:
+- the request type is _post_
+```sh
+/auth/login
+```
+##### body:
+- this is the request body we have to set from the client side
+```
+{
+    email: string,
+    password: string
+}
+```
+##### response payload:
+- this is the data or payload this route returns as a response
+```
+{
+    id: string,
+    name: string,
+    company: string,
+    email: string,
+    token: long_encrypted_string
+}
+```
