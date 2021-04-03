@@ -7,7 +7,7 @@ const schemaValidate = require("../utils/validations/validate");
 async function register(req, res) {
   const fields = await schemaValidate(validation.registerSchema, req.body);
   await authService.createUser(fields);
-  res.send("Successfully created the user ...");
+  res.send({ message: "Successfully created the user ..." });
 }
 
 async function login(req, res) {
