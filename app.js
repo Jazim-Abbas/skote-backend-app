@@ -4,8 +4,9 @@ require("express-async-errors");
 const bodyParser = require("body-parser");
 
 const routes = require("./routes");
-const exceptionHandling = require("./middlewares/exception_handling");
+require("./utils/check_env_vars")();
 const dbConnect = require("./db/connect");
+const exceptionHandling = require("./middlewares/exception_handling");
 
 dbConnect();
 const app = express();
