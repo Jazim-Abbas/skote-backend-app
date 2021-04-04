@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
+const config = require("config");
 
 module.exports = async () => {
+  const dbConnString = config.get("db.mongo_url");
   try {
-    await mongoose.connect("mongodb://localhost:27017/skote-app", {
+    await mongoose.connect(dbConnString, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
