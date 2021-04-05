@@ -5,6 +5,7 @@ const router = express.Router();
 router
   .post("/", aboutController.store)
   .get("/", aboutController.getSingle)
-  .patch("/:id", aboutController.update);
+  .patch("/:id", aboutController.update)
+  .delete("/:id", aboutController.destroy);
 
 module.exports = router;

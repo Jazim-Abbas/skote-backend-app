@@ -30,8 +30,17 @@ async function update(about, id) {
   }
 }
 
+async function destroy(id) {
+  try {
+    await About.findByIdAndDelete(id);
+  } catch (err) {
+    throw new Exceptions.NotFound("Record is not found you are requested ..");
+  }
+}
+
 module.exports = {
   save,
   getSingleRecord,
   update,
+  destroy,
 };

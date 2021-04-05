@@ -15,8 +15,14 @@ async function update(req, res) {
   res.send({ about });
 }
 
+async function destroy(req, res) {
+  await aboutService.destroy(req.params.id);
+  res.send("Successfully deleted the record ..");
+}
+
 module.exports = {
   store,
   getSingle,
   update,
+  destroy,
 };
