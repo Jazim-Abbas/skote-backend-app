@@ -1,4 +1,6 @@
 const aboutService = require("../services/about");
+const validation = require("../utils/validations/about");
+const schemaValidate = require("../utils/validations/validate");
 
 async function getSingle(req, res) {
   const about = await aboutService.getSingleRecord(req.user._id);
@@ -6,12 +8,14 @@ async function getSingle(req, res) {
 }
 
 async function store(req, res) {
-  const about = await aboutService.save(req.body, req.user._id);
+  const fields = await schemaValidate(validation.aboutSchema, req.body);
+  const about = await aboutService.save(fields, req.user._id);
   res.send({ about });
 }
 
 async function update(req, res) {
-  const about = await aboutService.update(req.body, req.params.id);
+  const fields = await schemaValidate(validation.aboutSchema, req.body);
+  const about = await aboutService.update(fields, req.params.id);
   res.send({ about });
 }
 
