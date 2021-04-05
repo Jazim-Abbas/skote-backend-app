@@ -31,8 +31,18 @@ async function update(company, id) {
   return updatedRecord;
 }
 
+async function destroy(id) {
+  try {
+    const recordInDb = await Company.findByIdAndDelete(id);
+    if (!recordInDb.$isDeleted) throw new Error("err");
+  } catch (err) {
+    throw new Exceptions.NotFound("Record is not found you are requested ..");
+  }
+}
+
 module.exports = {
   save,
   getSingle,
   update,
+  destroy,
 };

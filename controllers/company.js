@@ -15,8 +15,14 @@ async function update(req, res) {
   res.send({ company });
 }
 
+async function destroy(req, res) {
+  await companyService.destroy(req.params.id);
+  res.send({ message: "Successfully deleted the company detail .." });
+}
+
 module.exports = {
   save,
   getSingle,
   update,
+  destroy,
 };
