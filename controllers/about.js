@@ -21,7 +21,7 @@ async function update(req, res) {
 
 async function destroy(req, res) {
   await aboutService.destroy(req.params.id);
-  res.send("Successfully deleted the record ..");
+  res.send({ message: "Successfully deleted the record .." });
 }
 
 module.exports = {

@@ -208,3 +208,23 @@
     }
 }
 ```
+
+#### /about/:id:
+
+- the requset type is delete
+
+##### params
+
+```
+{
+    id: string
+}
+```
+
+##### response payload:
+
+```
+{
+    message: string
+}
+```
