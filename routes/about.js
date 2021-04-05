@@ -1,8 +1,7 @@
 const express = require("express");
 const aboutController = require("../controllers/about");
-const isAuthMiddleware = require("../middlewares/is_auth");
 
 const router = express.Router();
-router.post("/", isAuthMiddleware, aboutController.store);
+router.post("/", aboutController.store).get("/", aboutController.getSingle);
 
 module.exports = router;
