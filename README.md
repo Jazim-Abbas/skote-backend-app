@@ -283,7 +283,7 @@
 }
 ```
 
-#### /company/:id
+#### /company/:id:
 
 - the requset type is patch
 
