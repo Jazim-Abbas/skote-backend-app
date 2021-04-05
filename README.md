@@ -323,3 +323,23 @@
     }
 }
 ```
+
+#### /company
+
+- the requset type is get
+
+##### response payload:
+
+```
+{
+   companny: {
+        logo: file (but currenlty this is string),
+        bus_name: string,
+        bus_email: string,
+        bus_phone: string,
+        bus_address: string,
+        website_link: string,
+        _id: string
+    }
+}
+```
