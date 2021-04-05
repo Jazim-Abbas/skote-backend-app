@@ -3,6 +3,8 @@ const nodemailer = require("nodemailer");
 
 const mailConfig = config.get("mail");
 const transport = nodemailer.createTransport({
+  // host: "smtp.mailtrap.io",
+  // port: 2525,
   service: "gmail",
   auth: {
     user: mailConfig.username,
@@ -10,11 +12,10 @@ const transport = nodemailer.createTransport({
   },
 });
 
-function sendMail(email) {
+function sendMail(configs) {
+  console.log(configs);
   return transport.sendMail({
-    to: email,
-    subject: "Please Verify your email",
-    text: "Verify ...",
+    ...configs,
   });
 }
 

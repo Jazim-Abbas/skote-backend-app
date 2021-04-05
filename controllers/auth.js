@@ -2,6 +2,7 @@ const authService = require("../services/auth");
 const validation = require("../utils/validations/auth");
 const setTokenInUser = require("../utils/set_user_token");
 const schemaValidate = require("../utils/validations/validate");
+const mailer = require("../utils/send_email");
 
 async function register(req, res) {
   const fields = await schemaValidate(validation.registerSchema, req.body);
@@ -28,7 +29,17 @@ async function passwordForget(req, res) {
 }
 
 async function sendEmailForVerification(req, res) {
-  res.send("Check your email ...");
+  try {
+    await mailer.sendMail({
+      to: req.body.email,
+      subject: "Please verify your email",
+      html: "Please verify ..",
+    });
+    res.send("Check your email ...");
+  } catch (err) {
+    console.log(err);
+    res.send("Error");
+  }
 }
 
 module.exports = {
