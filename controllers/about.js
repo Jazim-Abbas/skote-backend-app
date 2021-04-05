@@ -1,5 +1,8 @@
+const aboutService = require("../services/about");
+
 async function store(req, res) {
-  res.send("Store about record");
+  const about = await aboutService.save(req.body, req.user._id);
+  res.send({ about });
 }
 
 module.exports = {

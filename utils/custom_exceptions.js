@@ -53,6 +53,12 @@ class LoginFailed extends AccessDenied {
   }
 }
 
+class BadRequset extends HttpError {
+  constructor(message = "Bad Requset") {
+    super(message, 400, "BAD_REQUEST");
+  }
+}
+
 module.exports = {
   HttpError,
   EmailExist,
@@ -62,4 +68,5 @@ module.exports = {
   AccessDenied,
   LoginFailed,
   EmailNotExists,
+  BadRequset,
 };
