@@ -19,20 +19,22 @@ async function save(about, user_id) {
 }
 
 async function update(about, id) {
-  try {
-    return await About.findByIdAndUpdate(
-      id,
-      { $set: { ...about } },
-      { new: true }
-    ).select("-user");
-  } catch (err) {
+  const updatedRecord = await About.findByIdAndUpdate(
+    id,
+    { $set: { ...about } },
+    { new: true }
+  ).select("-user");
+
+  if (!updatedRecord)
     throw new Exceptions.NotFound("Record is not found you are requested ..");
-  }
+
+  return updatedRecord;
 }
 
 async function destroy(id) {
   try {
-    await About.findByIdAndDelete(id);
+    const recordInDb = await About.findByIdAndDelete(id);
+    if (!recordInDb.$isDeleted) throw new Error("err");
   } catch (err) {
     throw new Exceptions.NotFound("Record is not found you are requested ..");
   }
