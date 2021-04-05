@@ -18,7 +18,20 @@ async function save(about, user_id) {
   }
 }
 
+async function update(about, id) {
+  try {
+    return await About.findByIdAndUpdate(
+      id,
+      { $set: { ...about } },
+      { new: true }
+    ).select("-user");
+  } catch (err) {
+    throw new Exceptions.NotFound("Record is not found you are requested ..");
+  }
+}
+
 module.exports = {
   save,
   getSingleRecord,
+  update,
 };

@@ -10,7 +10,13 @@ async function store(req, res) {
   res.send({ about });
 }
 
+async function update(req, res) {
+  const about = await aboutService.update(req.body, req.params.id);
+  res.send({ about });
+}
+
 module.exports = {
   store,
   getSingle,
+  update,
 };
