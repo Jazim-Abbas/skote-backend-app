@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const config = require("config");
+
+const generateToken = require("../utils/generate_token");
 
 const userSchema = new mongoose.Schema({
   name: String,
@@ -39,8 +39,7 @@ userSchema.method("comparePassword", async function (password) {
 
 userSchema.method("generateToken", async function () {
   const payload = { _id: this._id, name: this.name, email: this.email };
-  const token = await jwt.sign(payload, config.get("jwt.secret"));
-  return token;
+  return await generateToken(payload);
 });
 
 const User = mongoose.model("User", userSchema);

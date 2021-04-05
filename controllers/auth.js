@@ -27,8 +27,13 @@ async function passwordForget(req, res) {
   res.send({ message: "Check your email to change the password ..." });
 }
 
+async function sendEmailForVerification(req, res) {
+  res.send("Check your email ...");
+}
+
 module.exports = {
   register,
   login,
   passwordForget,
+  sendEmailForVerification,
 };
