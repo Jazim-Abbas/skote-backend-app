@@ -192,3 +192,19 @@
     }
 }
 ```
+
+#### /about
+
+- the requset type is get
+
+##### response payload:
+
+```
+{
+    about: {
+        name: string,
+        role: string,
+        _id: string
+    }
+}
+```
