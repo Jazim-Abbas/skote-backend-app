@@ -10,7 +10,13 @@ async function save(req, res) {
   res.send({ company });
 }
 
+async function update(req, res) {
+  const company = await companyService.update(req.body, req.params.id);
+  res.send({ company });
+}
+
 module.exports = {
   save,
   getSingle,
+  update,
 };

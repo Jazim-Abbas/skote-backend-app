@@ -18,7 +18,21 @@ async function save(company, user_id) {
   }
 }
 
+async function update(company, id) {
+  const updatedRecord = await Company.findByIdAndUpdate(
+    id,
+    { $set: { ...company } },
+    { new: true }
+  ).select("-user");
+
+  if (!updatedRecord)
+    throw new Exceptions.NotFound("Record is not found you are requested ..");
+
+  return updatedRecord;
+}
+
 module.exports = {
   save,
   getSingle,
+  update,
 };
