@@ -25,6 +25,7 @@
 - _message_: the actual message of error
 - _name_: the name of error e.g Server_ERROR or NOT_FOUND_ERROR etc ..
 - _errors_: this is usually occurs when validation fails and the validation errors will catch this array ..
+***
 
 ## 2 _Registration_
 
@@ -58,6 +59,7 @@
     message: string
 }
 ```
+***
 
 ## 3 _Login_
 
@@ -123,6 +125,7 @@
     message: string
 }
 ```
+***
 
 ## 5 _About_
 
@@ -226,5 +229,50 @@
 ```
 {
     message: string
+}
+```
+***
+
+## 6 _CompanyDetail_
+
+##### routes:
+
+```sh
+/company: get
+/company: post
+/company/:id: patch
+/company/:id: delete
+```
+
+#### /company:
+
+- the requset type is post
+
+##### body
+
+```
+{
+    logo: file (but currenlty this is string),
+    bus_name: string,
+    bus_email: string,
+    bus_phone: string,
+    bus_address: string,
+    website_link: string
+}
+```
+
+##### response payload:
+
+```
+{
+    companny: {
+        logo: file (but currenlty this is string),
+        bus_name: string,
+        bus_email: string,
+        bus_phone: string,
+        bus_address: string,
+        website_link: string,
+        _id: string
+    }
 }
 ```
