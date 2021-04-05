@@ -1,6 +1,10 @@
 const Company = require("../db/company");
 const Exceptions = require("../utils/custom_exceptions");
 
+async function getSingle(user_id) {
+  return await Company.findOne({ user: user_id }).select("-user");
+}
+
 async function save(company, user_id) {
   const record = new Company({
     user: user_id,
@@ -16,4 +20,5 @@ async function save(company, user_id) {
 
 module.exports = {
   save,
+  getSingle,
 };
