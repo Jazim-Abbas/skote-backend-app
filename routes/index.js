@@ -11,6 +11,6 @@ const router = express.Router();
 router.use("/auth", authRoutes);
 router.use("/about", isAuthMiddleware, aboutRoutes);
 router.use("/company", isAuthMiddleware, companyRoutes);
-router.use("/business", businessRoutes);
+router.use("/business", isAuthMiddleware, businessRoutes);
 
 module.exports = router;
