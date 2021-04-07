@@ -16,8 +16,14 @@ async function update(req, res) {
   res.send({ introduction: introRecord });
 }
 
+async function destroy(req, res) {
+  await introductionService.destroy(req.params.id);
+  res.send({ message: "Successfully deleted the record .." });
+}
+
 module.exports = {
   store,
   fetchSingle,
   update,
+  destroy,
 };
