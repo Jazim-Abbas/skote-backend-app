@@ -1,8 +1,13 @@
 const Introduction = require("../../db/introduction");
 const Exceptions = require("../../utils/custom_exceptions");
 
-async function store(detail) {
+async function getSingle(user_id) {
+  return await Introduction.findOne({ user: user_id }).select("-user");
+}
+
+async function store(detail, user_id) {
   const introRecord = new Introduction({
+    user: user_id,
     ...detail,
   });
 
@@ -15,4 +20,5 @@ async function store(detail) {
 
 module.exports = {
   store,
+  getSingle,
 };
