@@ -11,7 +11,13 @@ async function store(req, res) {
   res.send({ introduction: introRecord });
 }
 
+async function update(req, res) {
+  const introRecord = await introductionService.update(req.body, req.params.id);
+  res.send({ introduction: introRecord });
+}
+
 module.exports = {
   store,
   fetchSingle,
+  update,
 };
