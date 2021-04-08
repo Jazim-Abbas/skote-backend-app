@@ -10,4 +10,9 @@ async function store(req, res) {
   res.send({ competitor });
 }
 
-module.exports = { store, fetchSingle };
+async function update(req, res) {
+  const competitor = await competitorService.update(req.body, req.params.id);
+  res.send({ competitor });
+}
+
+module.exports = { store, fetchSingle, update };
