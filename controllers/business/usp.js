@@ -1,4 +1,6 @@
 const uspService = require("../../services/business/usp");
+const validation = require("../../utils/validations/usp");
+const schemaValidate = require("../../utils/validations/validate");
 
 async function fetchSingle(req, res) {
   const record = await uspService.getSingle(req.user._id);
@@ -6,7 +8,8 @@ async function fetchSingle(req, res) {
 }
 
 async function store(req, res) {
-  const record = await uspService.store(req.body, req.user._id);
+  const fields = await schemaValidate(validation.uspSchema, req.body);
+  const record = await uspService.store(fields, req.user._id);
   res.send({ usp: record });
 }
 
