@@ -14,6 +14,7 @@ async function store(req, res) {
 }
 
 async function update(req, res) {
+  const fields = await schemaValidate(validation.uspSchema, req.body);
   const record = await uspService.update(req.body, req.params.id);
   res.send({ usp: record });
 }
