@@ -1,3 +1,5 @@
+const validation = require("../../utils/validations/competitor");
+const schemaValidate = require("../../utils/validations/validate");
 const competitorService = require("../../services/business/competitor");
 
 async function fetchSingle(req, res) {
@@ -6,7 +8,8 @@ async function fetchSingle(req, res) {
 }
 
 async function store(req, res) {
-  const competitor = await competitorService.store(req.body, req.user._id);
+  const fields = await schemaValidate(validation.competitorSchema, req.body);
+  const competitor = await competitorService.store(fields, req.user._id);
   res.send({ competitor });
 }
 
