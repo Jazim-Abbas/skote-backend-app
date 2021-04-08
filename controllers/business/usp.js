@@ -10,7 +10,13 @@ async function store(req, res) {
   res.send({ usp: record });
 }
 
+async function update(req, res) {
+  const record = await uspService.update(req.body, req.params.id);
+  res.send({ usp: record });
+}
+
 module.exports = {
   store,
   fetchSingle,
+  update,
 };

@@ -18,7 +18,21 @@ async function store(detail, user_id) {
   }
 }
 
+async function update(detail, id) {
+  const updatedRecord = await USP.findByIdAndUpdate(
+    id,
+    { $set: { ...detail } },
+    { new: true }
+  ).select("-user");
+
+  if (!updatedRecord)
+    throw new Exceptions.NotFound("Record is not found you are requested ..");
+
+  return updatedRecord;
+}
+
 module.exports = {
   store,
   getSingle,
+  update,
 };
