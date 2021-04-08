@@ -1,6 +1,10 @@
 const USP = require("../../db/usp");
 const Exceptions = require("../../utils/custom_exceptions");
 
+async function getSingle(user_id) {
+  return await USP.findOne({ user: user_id }).select("-user");
+}
+
 async function store(detail, user_id) {
   const record = new USP({
     user: user_id,
@@ -16,4 +20,5 @@ async function store(detail, user_id) {
 
 module.exports = {
   store,
+  getSingle,
 };
