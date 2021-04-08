@@ -1,6 +1,6 @@
-const introductionService = require("../../services/business/introduction");
 const validation = require("../../utils/validations/introduction");
 const schemaValidate = require("../../utils/validations/validate");
+const introductionService = require("../../services/business/introduction");
 
 async function fetchSingle(req, res) {
   const introRecord = await introductionService.getSingle(req.user._id);
@@ -14,7 +14,8 @@ async function store(req, res) {
 }
 
 async function update(req, res) {
-  const introRecord = await introductionService.update(req.body, req.params.id);
+  const fields = await schemaValidate(validation.introSchema, req.body);
+  const introRecord = await introductionService.update(fields, req.params.id);
   res.send({ introduction: introRecord });
 }
 
