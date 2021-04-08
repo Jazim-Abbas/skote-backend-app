@@ -5,6 +5,7 @@ const router = express.Router();
 router
   .post("/", competitorController.store)
   .get("/", competitorController.fetchSingle)
-  .patch("/:id", competitorController.update);
+  .patch("/:id", competitorController.update)
+  .delete("/:id", competitorController.destroy);
 
 module.exports = router;

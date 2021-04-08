@@ -31,4 +31,13 @@ async function update(detail, id) {
   return updatedRecord;
 }
 
-module.exports = { store, getSingle, update };
+async function destroy(id) {
+  try {
+    const recordInDb = await Competitor.findByIdAndDelete(id);
+    if (!recordInDb.$isDeleted) throw new Error("err");
+  } catch (err) {
+    throw new Exceptions.NotFound("Record is not found you are requested ..");
+  }
+}
+
+module.exports = { store, getSingle, update, destroy };
