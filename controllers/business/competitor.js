@@ -14,7 +14,8 @@ async function store(req, res) {
 }
 
 async function update(req, res) {
-  const competitor = await competitorService.update(req.body, req.params.id);
+  const fields = await schemaValidate(validation.competitorSchema, req.body);
+  const competitor = await competitorService.update(fields, req.params.id);
   res.send({ competitor });
 }
 
