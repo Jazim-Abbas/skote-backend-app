@@ -31,8 +31,18 @@ async function update(detail, id) {
   return updatedRecord;
 }
 
+async function destroy(id) {
+  try {
+    const recordInDb = await USP.findByIdAndDelete(id);
+    if (!recordInDb.$isDeleted) throw new Error("err");
+  } catch (err) {
+    throw new Exceptions.NotFound("Record is not found you are requested ..");
+  }
+}
+
 module.exports = {
   store,
   getSingle,
   update,
+  destroy,
 };

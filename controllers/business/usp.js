@@ -15,8 +15,14 @@ async function update(req, res) {
   res.send({ usp: record });
 }
 
+async function destroy(req, res) {
+  await uspService.destroy(req.params.id);
+  res.send({ message: "Successfully deleted the record  .." });
+}
+
 module.exports = {
   store,
   fetchSingle,
   update,
+  destroy,
 };
