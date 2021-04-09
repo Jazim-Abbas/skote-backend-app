@@ -369,6 +369,7 @@
 ## 6 _Business Information_
 
 ### _Root Path_
+
 ```sh
 /business
 ```
@@ -597,5 +598,109 @@
 
 ---
 
+### 3 - _Target Market_
 
+##### routes:
 
+```sh
+/market: get
+/market: post
+/market/:id: patch
+/market/:id: delete
+```
+
+#### /market:
+
+- the requset type is post
+
+##### body
+
+```
+{
+    niche_market: string,
+    target_audience: string,
+}
+```
+
+##### response payload:
+
+```
+{
+    targetMarket: {
+        niche_market: string,
+        target_audience: string,
+        _id: string
+    }
+}
+```
+
+#### /market/:id:
+
+- the requset type is patch
+
+##### params
+
+```
+{
+    id: string
+}
+```
+
+##### body
+
+```
+{
+    niche_market: string,
+    target_audience: string,
+}
+```
+
+##### response payload:
+
+```
+{
+    targetMarket: {
+        niche_market: string,
+        target_audience: string,
+        _id: string
+    }
+}
+```
+
+#### /market
+
+- the requset type is get
+
+##### response payload:
+
+```
+{
+   targetMarket: {
+        niche_market: string,
+        target_audience: string,
+        _id: string
+    }
+}
+```
+
+#### /market/:id:
+
+- the requset type is delete
+
+##### params
+
+```
+{
+    id: string
+}
+```
+
+##### response payload:
+
+```
+{
+    message: string
+}
+```
+
+---
