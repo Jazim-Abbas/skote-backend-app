@@ -485,3 +485,117 @@
 
 ---
 
+### 2 - _Unique Selling Point_
+
+##### routes:
+
+```sh
+/usp: get
+/usp: post
+/usp/:id: patch
+/usp/:id: delete
+```
+
+#### /usp:
+
+- the requset type is post
+
+##### body
+
+```
+{
+    description: string,
+    strength: string,
+    reason_to_choose: string,
+}
+```
+
+##### response payload:
+
+```
+{
+    usp: {
+        description: string,
+        strength: string,
+        reason_to_choose: string,
+        _id: string
+    }
+}
+```
+
+#### /usp/:id:
+
+- the requset type is patch
+
+##### params
+
+```
+{
+    id: string
+}
+```
+
+##### body
+
+```
+{
+    description: string,
+    strength: string,
+    reason_to_choose: string,
+}
+```
+
+##### response payload:
+
+```
+{
+    usp: {
+        description: string,
+        strength: string,
+        reason_to_choose: string,
+        _id: string
+    }
+}
+```
+
+#### /usp
+
+- the requset type is get
+
+##### response payload:
+
+```
+{
+   usp: {
+        description: string,
+        strength: string,
+        reason_to_choose: string,
+        _id: string
+    }
+}
+```
+
+#### /usp/:id:
+
+- the requset type is delete
+
+##### params
+
+```
+{
+    id: string
+}
+```
+
+##### response payload:
+
+```
+{
+    message: string
+}
+```
+
+---
+
+
+
