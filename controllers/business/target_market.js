@@ -14,10 +14,8 @@ async function store(req, res) {
 }
 
 async function update(req, res) {
-  const targetMarket = await targetMarketService.update(
-    req.body,
-    req.params.id
-  );
+  const fields = await schemaValidate(validation.marketSchema, req.body);
+  const targetMarket = await targetMarketService.update(fields, req.params.id);
   res.send({ targetMarket });
 }
 
