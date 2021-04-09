@@ -10,4 +10,12 @@ async function store(req, res) {
   res.send({ targetMarket });
 }
 
-module.exports = { store, fetchSingle };
+async function update(req, res) {
+  const targetMarket = await targetMarketService.update(
+    req.body,
+    req.params.id
+  );
+  res.send({ targetMarket });
+}
+
+module.exports = { store, fetchSingle, update };
