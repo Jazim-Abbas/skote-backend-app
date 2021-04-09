@@ -704,3 +704,112 @@
 ```
 
 ---
+
+
+### 4 - _Competitor_
+
+##### routes:
+
+```sh
+/competitor: get
+/competitor: post
+/competitor/:id: patch
+/competitor/:id: delete
+```
+
+#### /competitor:
+
+- the requset type is post
+
+##### body
+
+```
+{
+    description: string,
+    web_addresses: Array[string],
+}
+```
+
+##### response payload:
+
+```
+{
+    competitor: {
+        description: string,
+        web_addresses: Array[string],
+        _id: string
+    }
+}
+```
+
+#### /competitor/:id:
+
+- the requset type is patch
+
+##### params
+
+```
+{
+    id: string
+}
+```
+
+##### body
+
+```
+{
+    description: string,
+    web_addresses: Array[string],
+}
+```
+
+##### response payload:
+
+```
+{
+    competitor: {
+        description: string,
+        web_addresses: Array[string],
+        _id: string
+    }
+}
+```
+
+#### /market
+
+- the requset type is get
+
+##### response payload:
+
+```
+{
+   competitor: {
+        description: string,
+        web_addresses: Array[string],
+        _id: string
+    }
+}
+```
+
+#### /market/:id:
+
+- the requset type is delete
+
+##### params
+
+```
+{
+    id: string
+}
+```
+
+##### response payload:
+
+```
+{
+    message: string
+}
+```
+
+---
+
