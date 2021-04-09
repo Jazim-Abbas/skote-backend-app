@@ -365,3 +365,123 @@
 ```
 
 ---
+
+## 6 _Business Information_
+
+### _Root Path_
+```sh
+/business
+```
+
+### 1 - _Introduction_
+
+##### routes:
+
+```sh
+/introduction: get
+/introduction: post
+/introduction/:id: patch
+/introduction/:id: delete
+```
+
+#### /introduction:
+
+- the requset type is post
+
+##### body
+
+```
+{
+    bus_short_desc: string,
+    company_do: string,
+    products: Array[string],
+}
+```
+
+##### response payload:
+
+```
+{
+    introduction: {
+        bus_short_desc: string,
+        company_do: string,
+        products: Array[string],
+        _id: string
+    }
+}
+```
+
+#### /introduction/:id:
+
+- the requset type is patch
+
+##### params
+
+```
+{
+    id: string
+}
+```
+
+##### body
+
+```
+{
+    bus_short_desc: string,
+    company_do: string,
+    products: Array[string],
+}
+```
+
+##### response payload:
+
+```
+{
+    introduction: {
+        bus_short_desc: string,
+        company_do: string,
+        products: Array[string],
+        _id: string
+    }
+}
+```
+
+#### /introduction
+
+- the requset type is get
+
+##### response payload:
+
+```
+{
+   introduction: {
+        bus_short_desc: string,
+        company_do: string,
+        products: Array[string],
+        _id: string
+    }
+}
+```
+
+#### /introduction/:id:
+
+- the requset type is delete
+
+##### params
+
+```
+{
+    id: string
+}
+```
+
+##### response payload:
+
+```
+{
+    message: string
+}
+```
+
+---
+
