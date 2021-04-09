@@ -5,6 +5,7 @@ const router = express.Router();
 router
   .post("/", marketController.store)
   .get("/", marketController.fetchSingle)
-  .patch("/:id", marketController.update);
+  .patch("/:id", marketController.update)
+  .delete("/:id", marketController.destroy);
 
 module.exports = router;

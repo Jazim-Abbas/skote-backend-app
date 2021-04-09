@@ -18,4 +18,9 @@ async function update(req, res) {
   res.send({ targetMarket });
 }
 
-module.exports = { store, fetchSingle, update };
+async function destroy(req, res) {
+  await targetMarketService.destroy(req.params.id);
+  res.send({ message: "Successfully deleted the record .." });
+}
+
+module.exports = { store, fetchSingle, update, destroy };
