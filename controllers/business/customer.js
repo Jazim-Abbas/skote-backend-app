@@ -10,4 +10,9 @@ async function store(req, res) {
   res.send({ customer });
 }
 
-module.exports = { store, fetchSingle };
+async function update(req, res) {
+  const customer = await customerService.update(req.body, req.params.id);
+  res.send({ customer });
+}
+
+module.exports = { store, fetchSingle, update };

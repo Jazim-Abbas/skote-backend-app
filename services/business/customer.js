@@ -18,4 +18,17 @@ async function store(detail, user_id) {
   }
 }
 
-module.exports = { store, getSingle };
+async function update(detail, id) {
+  const updatedRecord = await Customer.findByIdAndUpdate(
+    id,
+    { $set: { ...detail } },
+    { new: true }
+  ).select("-user");
+
+  if (!updatedRecord)
+    throw new Exceptions.NotFound("Record is not found you are requested ..");
+
+  return updatedRecord;
+}
+
+module.exports = { store, getSingle, update };
