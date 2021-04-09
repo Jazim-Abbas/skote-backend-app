@@ -1,3 +1,5 @@
+const validation = require("../../utils/validations/customer");
+const schemaValidate = require("../../utils/validations/validate");
 const customerService = require("../../services/business/customer");
 
 async function fetchSingle(req, res) {
@@ -6,12 +8,14 @@ async function fetchSingle(req, res) {
 }
 
 async function store(req, res) {
-  const customer = await customerService.store(req.body, req.user._id);
+  const fields = await schemaValidate(validation.customerSchema, req.body);
+  const customer = await customerService.store(fields, req.user._id);
   res.send({ customer });
 }
 
 async function update(req, res) {
-  const customer = await customerService.update(req.body, req.params.id);
+  const fields = await schemaValidate(validation.customerSchema, req.body);
+  const customer = await customerService.update(fields, req.params.id);
   res.send({ customer });
 }
 
