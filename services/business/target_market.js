@@ -1,6 +1,10 @@
 const TargetMarket = require("../../db/target_market");
 const Exceptions = require("../../utils/custom_exceptions");
 
+async function getSingle(user_id) {
+  return await TargetMarket.findOne({ user: user_id }).select("-user");
+}
+
 async function store(detail, user_id) {
   const record = new TargetMarket({
     user: user_id,
@@ -14,4 +18,4 @@ async function store(detail, user_id) {
   }
 }
 
-module.exports = { store };
+module.exports = { store, getSingle };

@@ -1,8 +1,13 @@
 const targetMarketService = require("../../services/business/target_market");
 
+async function fetchSingle(req, res) {
+  const targetMarket = await targetMarketService.getSingle(req.user._id);
+  res.send({ targetMarket });
+}
+
 async function store(req, res) {
   const targetMarket = await targetMarketService.store(req.body, req.user._id);
   res.send({ targetMarket });
 }
 
-module.exports = { store };
+module.exports = { store, fetchSingle };
