@@ -1,5 +1,9 @@
+const validation = require("../../utils/validations/engage");
+const schemaValidate = require("../../utils/validations/validate");
+
 async function store(req, res) {
-  res.send(req.body);
+  const fields = await schemaValidate(validation.engageSchema, req.body);
+  res.send({ fields });
 }
 
 module.exports = { store };
