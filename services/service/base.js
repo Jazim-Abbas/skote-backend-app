@@ -16,6 +16,7 @@ async function checkServiceFoundInCheckList(
 }
 
 async function getSingle(user_id) {
+  await checkServiceFoundInCheckList(user_id);
   return await WG_Objective.findOne({ user: user_id }).select("-user");
 }
 
