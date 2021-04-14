@@ -10,4 +10,14 @@ async function store(req, res) {
   res.send({ objective });
 }
 
-module.exports = { store, fetchSingle };
+async function update(req, res) {
+  console.log(req.params.id);
+  const objective = await baseService.update(
+    req.body,
+    req.params.id,
+    req.user._id
+  );
+  res.send({ objective });
+}
+
+module.exports = { store, fetchSingle, update };

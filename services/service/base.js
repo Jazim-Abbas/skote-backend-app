@@ -34,7 +34,8 @@ async function store(detail, user_id) {
   }
 }
 
-async function update(detail, id) {
+async function update(detail, id, user_id) {
+  await checkServiceFoundInCheckList(user_id);
   const updatedRecord = await WG_Objective.findByIdAndUpdate(
     id,
     { $set: { ...detail } },

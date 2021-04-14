@@ -4,6 +4,7 @@ const objectiveController = require("../../controllers/service/wg_objective");
 const router = express.Router();
 router
   .post("/", objectiveController.store)
-  .get("/", objectiveController.fetchSingle);
+  .get("/", objectiveController.fetchSingle)
+  .patch("/:id", objectiveController.update);
 
 module.exports = router;
