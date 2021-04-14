@@ -48,7 +48,8 @@ async function update(detail, id, user_id) {
   return updatedRecord;
 }
 
-async function destroy(id) {
+async function destroy(id, user_id) {
+  await checkServiceFoundInCheckList(user_id);
   try {
     const recordInDb = await WG_Objective.findByIdAndDelete(id);
     if (!recordInDb.$isDeleted) throw new Error("err");

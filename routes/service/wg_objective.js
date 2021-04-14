@@ -5,6 +5,7 @@ const router = express.Router();
 router
   .post("/", objectiveController.store)
   .get("/", objectiveController.fetchSingle)
-  .patch("/:id", objectiveController.update);
+  .patch("/:id", objectiveController.update)
+  .delete("/:id", objectiveController.destroy);
 
 module.exports = router;

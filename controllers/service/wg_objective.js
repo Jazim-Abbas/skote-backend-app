@@ -20,4 +20,9 @@ async function update(req, res) {
   res.send({ objective });
 }
 
-module.exports = { store, fetchSingle, update };
+async function destroy(req, res) {
+  await baseService.destroy(req.params.id, req.user._id);
+  res.send({ message: "Successfully deleted the record .." });
+}
+
+module.exports = { store, fetchSingle, update, destroy };
