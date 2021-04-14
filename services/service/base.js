@@ -15,14 +15,14 @@ async function checkServiceFoundInCheckList(
   return checkList;
 }
 
-async function getSingle(user_id) {
+async function getSingle(model,user_id) {
   await checkServiceFoundInCheckList(user_id);
-  return await WG_Objective.findOne({ user: user_id }).select("-user");
+  return await model.findOne({ user: user_id }).select("-user");
 }
 
-async function store(detail, user_id) {
+async function store(model, detail, user_id) {
   await checkServiceFoundInCheckList(user_id);
-  const record = new WG_Objective({
+  const record = new model({
     user: user_id,
     ...detail,
   });
@@ -34,9 +34,9 @@ async function store(detail, user_id) {
   }
 }
 
-async function update(detail, id, user_id) {
+async function update(model, detail, id, user_id) {
   await checkServiceFoundInCheckList(user_id);
-  const updatedRecord = await WG_Objective.findByIdAndUpdate(
+  const updatedRecord = await model.findByIdAndUpdate(
     id,
     { $set: { ...detail } },
     { new: true }
@@ -48,10 +48,10 @@ async function update(detail, id, user_id) {
   return updatedRecord;
 }
 
-async function destroy(id, user_id) {
+async function destroy(model, id, user_id) {
   await checkServiceFoundInCheckList(user_id);
   try {
-    const recordInDb = await WG_Objective.findByIdAndDelete(id);
+    const recordInDb = await model.findByIdAndDelete(id);
     if (!recordInDb.$isDeleted) throw new Error("err");
   } catch (err) {
     throw new Exceptions.NotFound("Record is not found you are requested ..");
