@@ -15,13 +15,13 @@ async function checkServiceFoundInCheckList(
   return checkList;
 }
 
-async function getSingle(model,user_id) {
-  await checkServiceFoundInCheckList(user_id);
+async function getSingle(model, user_id, service) {
+  await checkServiceFoundInCheckList(user_id, service);
   return await model.findOne({ user: user_id }).select("-user");
 }
 
-async function store(model, detail, user_id) {
-  await checkServiceFoundInCheckList(user_id);
+async function store(model, detail, user_id, service) {
+  await checkServiceFoundInCheckList(user_id, service);
   const record = new model({
     user: user_id,
     ...detail,
@@ -34,13 +34,11 @@ async function store(model, detail, user_id) {
   }
 }
 
-async function update(model, detail, id, user_id) {
-  await checkServiceFoundInCheckList(user_id);
-  const updatedRecord = await model.findByIdAndUpdate(
-    id,
-    { $set: { ...detail } },
-    { new: true }
-  ).select("-user");
+async function update(model, detail, id, user_id, service) {
+  await checkServiceFoundInCheckList(user_id, service);
+  const updatedRecord = await model
+    .findByIdAndUpdate(id, { $set: { ...detail } }, { new: true })
+    .select("-user");
 
   if (!updatedRecord)
     throw new Exceptions.NotFound("Record is not found you are requested ..");
@@ -48,8 +46,8 @@ async function update(model, detail, id, user_id) {
   return updatedRecord;
 }
 
-async function destroy(model, id, user_id) {
-  await checkServiceFoundInCheckList(user_id);
+async function destroy(model, id, user_id, service) {
+  await checkServiceFoundInCheckList(user_id, service);
   try {
     const recordInDb = await model.findByIdAndDelete(id);
     if (!recordInDb.$isDeleted) throw new Error("err");
