@@ -1,14 +1,22 @@
 const baseService = require("../../services/service/base");
+const schemaValidate = require("../../utils/validations/validate");
 
 class BaseController {
   model = null;
   serviceEnroll = "web_development";
   payload = "record";
+  validation = null;
 
-  constructor(model, serviceEnroll = "web_development", payload = "record") {
+  constructor(
+    model,
+    validation,
+    serviceEnroll = "web_development",
+    payload = "record"
+  ) {
     this.model = model;
     this.serviceEnroll = serviceEnroll;
     this.payload = payload;
+    this.validation = validation;
   }
 
   async fetchSingle(req, res) {
@@ -22,9 +30,10 @@ class BaseController {
   }
 
   async store(req, res) {
+    const fields = await schemaValidate(this.validation, req.body);
     const record = await baseService.store(
       this.model,
-      req.body,
+      fields,
       req.user._id,
       this.serviceEnroll
     );
@@ -32,9 +41,10 @@ class BaseController {
   }
 
   async update(req, res) {
+    const fields = await schemaValidate(this.validation, req.body);
     const record = await baseService.update(
       this.model,
-      req.body,
+      fields,
       req.params.id,
       req.user._id,
       this.serviceEnroll
