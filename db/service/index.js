@@ -8,6 +8,7 @@ const WG_AdvancedFeature = require("./wg_advanced_feature");
 // design module
 const Like = require("./design/like");
 const Dislike = require("./design/dislike");
+const Color = require("./design/color");
 
 module.exports = {
   Engage,
@@ -20,4 +21,5 @@ module.exports = {
   // design module
   Like,
   Dislike,
+  Color,
 };
