@@ -11,6 +11,7 @@ const likeRoutes = require("./design/like");
 const dislikeRoutes = require("./design/dislike");
 const colorRoutes = require("./design/color");
 const styleRoutes = require("./design/style");
+const contentRoutes = require("./design/content");
 
 const router = express.Router();
 router.use("/wg-goal", webGoalRoutes);
@@ -25,5 +26,6 @@ router.use("/design/like", likeRoutes);
 router.use("/design/dislike", dislikeRoutes);
 router.use("/design/color", colorRoutes);
 router.use("/design/style", styleRoutes);
+router.use("/design/content", contentRoutes);
 
 module.exports = router;

@@ -10,6 +10,7 @@ const Like = require("./design/like");
 const Dislike = require("./design/dislike");
 const Color = require("./design/color");
 const Style = require("./design/style");
+const Content = require("./design/content");
 
 module.exports = {
   Engage,
@@ -24,4 +25,5 @@ module.exports = {
   Dislike,
   Color,
   Style,
+  Content,
 };
