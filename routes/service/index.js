@@ -8,6 +8,7 @@ const webGoalsFeatureRoutes = require("./wg_advanced_feature");
 
 // design module
 const likeRoutes = require("./design/like");
+const dislikeRoutes = require("./design/dislike");
 
 const router = express.Router();
 router.use("/wg-goal", webGoalRoutes);
@@ -19,5 +20,6 @@ router.use("/wg-advanced-feature", webGoalsFeatureRoutes);
 
 // design module
 router.use("/design/like", likeRoutes);
+router.use("/design/dislike", dislikeRoutes);
 
 module.exports = router;
