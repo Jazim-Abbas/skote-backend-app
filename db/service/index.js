@@ -12,6 +12,9 @@ const Color = require("./design/color");
 const Style = require("./design/style");
 const Content = require("./design/content");
 
+// advertise module
+const AD_Service = require("./advertise/service");
+
 module.exports = {
   Engage,
   WG_Objective,
@@ -26,4 +29,7 @@ module.exports = {
   Color,
   Style,
   Content,
+
+  // advertise module
+  AD_Service,
 };

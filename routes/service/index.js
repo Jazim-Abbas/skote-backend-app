@@ -13,6 +13,9 @@ const colorRoutes = require("./design/color");
 const styleRoutes = require("./design/style");
 const contentRoutes = require("./design/content");
 
+// advertise module
+const advertise_serviceRoutes = require("./advertise/service");
+
 const router = express.Router();
 router.use("/wg-goal", webGoalRoutes);
 router.use("/checklist", engageServiceRoutes);
@@ -27,5 +30,8 @@ router.use("/design/dislike", dislikeRoutes);
 router.use("/design/color", colorRoutes);
 router.use("/design/style", styleRoutes);
 router.use("/design/content", contentRoutes);
+
+// advertise module
+router.use("/advertise/service", advertise_serviceRoutes);
 
 module.exports = router;
