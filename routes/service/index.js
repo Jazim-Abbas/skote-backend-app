@@ -16,6 +16,7 @@ const contentRoutes = require("./design/content");
 // advertise module
 const advertise_serviceRoutes = require("./advertise/service");
 const advertise_offerInfoRoutes = require("./advertise/offer_info");
+const advertise_competitorRoutes = require("./advertise/offer_competitor");
 
 const router = express.Router();
 router.use("/wg-goal", webGoalRoutes);
@@ -35,5 +36,6 @@ router.use("/design/content", contentRoutes);
 // advertise module
 router.use("/advertise/service", advertise_serviceRoutes);
 router.use("/advertise/offer-info", advertise_offerInfoRoutes);
+router.use("/advertise/offer-competitor", advertise_competitorRoutes);
 
 module.exports = router;

@@ -15,6 +15,7 @@ const Content = require("./design/content");
 // advertise module
 const AD_Service = require("./advertise/service");
 const AD_OfferInfo = require("./advertise/offer_info");
+const Ad_OfferCompetitor = require("./advertise/offer_competitor");
 
 module.exports = {
   Engage,
@@ -34,4 +35,5 @@ module.exports = {
   // advertise module
   AD_Service,
   AD_OfferInfo,
+  Ad_OfferCompetitor,
 };
