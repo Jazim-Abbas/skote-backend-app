@@ -6,7 +6,10 @@ const generateToken = require("../utils/generate_token");
 const userSchema = new mongoose.Schema({
   name: String,
   company: String,
-  email: String,
+  email: {
+    type: String,
+    unique: true,
+  },
   password: String,
   isEmailVerified: {
     type: Boolean,

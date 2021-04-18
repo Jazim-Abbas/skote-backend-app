@@ -1,4 +1,6 @@
 const prompt = require("prompt");
+const User = require("../db/user");
+const dbConnect = require("../db/connect");
 
 var schema = {
   properties: {
@@ -36,12 +38,29 @@ var schema = {
 
 async function main() {
   prompt.start();
+  let connection;
 
   try {
-    const res = await prompt.get(schema);
-    console.log("result", res);
+    connection = await dbConnect();
+
+    const result = await prompt.get(schema);
+
+    const user = new User({
+      ...result,
+      is_admin: true,
+      company: "",
+    });
+
+    await user.save();
+    console.log("Superuser is successfully created ...");
   } catch (err) {
-    console.log("error");
+    console.log(
+      `Email ${
+        prompt.history("email").value
+      } is already exist. Try with different one ....`
+    );
+  } finally {
+    connection.disconnect();
   }
 }
 

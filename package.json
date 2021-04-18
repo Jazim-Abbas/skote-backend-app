@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
+    "create-super-user": "node exec/superuser.js",
     "test": "nodemon --exec \"mocha -R min\"",
     "test:all": "nodemon --exec \"mocha --recursive -R min\""
   },
