@@ -12,6 +12,10 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  is_admin: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 userSchema.pre("save", hashPassword);
