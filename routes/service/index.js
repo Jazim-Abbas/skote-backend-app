@@ -25,6 +25,7 @@ const advertise_targetMarketRoutes = require("./advertise/offer_target_market");
 const sp_platformRoutes = require("./social-media/platform");
 const sp_fbCredentialRoutes = require("./social-media/fb_credential");
 const sp_accountInfoRoutes = require("./social-media/account_info");
+const sp_webInfoRoutes = require("./social-media/web_info");
 
 const router = express.Router();
 router.use("/wg-goal", webGoalRoutes);
@@ -53,5 +54,6 @@ router.use("/advertise/offer-target", advertise_targetMarketRoutes);
 router.use("/social-media/platform", sp_platformRoutes);
 router.use("/social-media/fb-credential", sp_fbCredentialRoutes);
 router.use("/social-media/account-info", sp_accountInfoRoutes);
+router.use("/social-media/web-info", sp_webInfoRoutes);
 
 module.exports = router;
