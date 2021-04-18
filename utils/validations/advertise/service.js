@@ -8,7 +8,7 @@ const serviceSchema = yup.object().shape({
     .of(
       yup
         .string()
-        .oneOf(["social_media_advertise", "google_advertise"])
+        .oneOf(["Social Media Advertising", "Google Advertising"])
         .required()
     )
     .required(),
