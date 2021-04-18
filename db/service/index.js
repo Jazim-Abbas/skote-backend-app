@@ -22,6 +22,7 @@ const Ad_TargetMarket = require("./advertise/offer_target_market");
 
 // social-media module
 const SP_Platform = require("./social-media/platform");
+const SP_FbCredential = require("./social-media/fb_credential");
 
 module.exports = {
   Engage,
@@ -48,4 +49,5 @@ module.exports = {
 
   // social-media module
   SP_Platform,
+  SP_FbCredential,
 };
