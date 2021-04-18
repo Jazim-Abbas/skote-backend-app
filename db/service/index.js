@@ -18,6 +18,7 @@ const AD_OfferInfo = require("./advertise/offer_info");
 const Ad_OfferCompetitor = require("./advertise/offer_competitor");
 const Ad_OfferCustomer = require("./advertise/offer_customer");
 const Ad_OfferGoal = require("./advertise/offer_goal");
+const Ad_TargetMarket = require("./advertise/offer_target_market");
 
 module.exports = {
   Engage,
@@ -40,4 +41,5 @@ module.exports = {
   Ad_OfferCompetitor,
   Ad_OfferCustomer,
   Ad_OfferGoal,
+  Ad_TargetMarket,
 };

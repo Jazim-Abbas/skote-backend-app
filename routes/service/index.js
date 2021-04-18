@@ -19,6 +19,7 @@ const advertise_offerInfoRoutes = require("./advertise/offer_info");
 const advertise_competitorRoutes = require("./advertise/offer_competitor");
 const advertise_customerRoutes = require("./advertise/offer_customer");
 const advertise_goalRoutes = require("./advertise/offer_goal");
+const advertise_targetMarketRoutes = require("./advertise/offer_target_market");
 
 const router = express.Router();
 router.use("/wg-goal", webGoalRoutes);
@@ -41,5 +42,6 @@ router.use("/advertise/offer-info", advertise_offerInfoRoutes);
 router.use("/advertise/offer-competitor", advertise_competitorRoutes);
 router.use("/advertise/offer-customer", advertise_customerRoutes);
 router.use("/advertise/offer-goal", advertise_goalRoutes);
+router.use("/advertise/offer-target", advertise_targetMarketRoutes);
 
 module.exports = router;
