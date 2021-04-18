@@ -20,6 +20,9 @@ const Ad_OfferCustomer = require("./advertise/offer_customer");
 const Ad_OfferGoal = require("./advertise/offer_goal");
 const Ad_TargetMarket = require("./advertise/offer_target_market");
 
+// social-media module
+const SP_Platform = require("./social-media/platform");
+
 module.exports = {
   Engage,
   WG_Objective,
@@ -42,4 +45,7 @@ module.exports = {
   Ad_OfferCustomer,
   Ad_OfferGoal,
   Ad_TargetMarket,
+
+  // social-media module
+  SP_Platform,
 };

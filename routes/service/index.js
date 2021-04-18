@@ -21,6 +21,9 @@ const advertise_customerRoutes = require("./advertise/offer_customer");
 const advertise_goalRoutes = require("./advertise/offer_goal");
 const advertise_targetMarketRoutes = require("./advertise/offer_target_market");
 
+// social-media module
+const sp_platformRoutes = require("./social-media/platform");
+
 const router = express.Router();
 router.use("/wg-goal", webGoalRoutes);
 router.use("/checklist", engageServiceRoutes);
@@ -43,5 +46,8 @@ router.use("/advertise/offer-competitor", advertise_competitorRoutes);
 router.use("/advertise/offer-customer", advertise_customerRoutes);
 router.use("/advertise/offer-goal", advertise_goalRoutes);
 router.use("/advertise/offer-target", advertise_targetMarketRoutes);
+
+// social-media module
+router.use("/social-media/platform", sp_platformRoutes);
 
 module.exports = router;
