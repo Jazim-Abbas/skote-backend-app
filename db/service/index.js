@@ -26,6 +26,9 @@ const SP_FbCredential = require("./social-media/fb_credential");
 const SP_AccountInfo = require("./social-media/account_info");
 const SP_WebInfo = require("./social-media/web_info");
 
+// logo-design module
+const LD_LogoDetail = require("./logo-design/logo_detail");
+
 module.exports = {
   Engage,
   WG_Objective,
@@ -54,4 +57,7 @@ module.exports = {
   SP_FbCredential,
   SP_AccountInfo,
   SP_WebInfo,
+
+  // logo-design module
+  LD_LogoDetail,
 };
