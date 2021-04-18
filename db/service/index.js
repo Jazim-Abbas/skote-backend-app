@@ -25,6 +25,7 @@ const SP_Platform = require("./social-media/platform");
 const SP_FbCredential = require("./social-media/fb_credential");
 const SP_AccountInfo = require("./social-media/account_info");
 const SP_WebInfo = require("./social-media/web_info");
+const SP_Post = require("./social-media/posting");
 
 // logo-design module
 const LD_LogoDetail = require("./logo-design/logo_detail");
@@ -57,6 +58,7 @@ module.exports = {
   SP_FbCredential,
   SP_AccountInfo,
   SP_WebInfo,
+  SP_Post,
 
   // logo-design module
   LD_LogoDetail,

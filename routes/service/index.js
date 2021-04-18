@@ -26,6 +26,7 @@ const sp_platformRoutes = require("./social-media/platform");
 const sp_fbCredentialRoutes = require("./social-media/fb_credential");
 const sp_accountInfoRoutes = require("./social-media/account_info");
 const sp_webInfoRoutes = require("./social-media/web_info");
+const sp_postRoutes = require("./social-media/posting");
 
 // logo-design module
 const ld_logoDetailRoutes = require("./logo-design/logo_detail");
@@ -58,6 +59,7 @@ router.use("/social-media/platform", sp_platformRoutes);
 router.use("/social-media/fb-credential", sp_fbCredentialRoutes);
 router.use("/social-media/account-info", sp_accountInfoRoutes);
 router.use("/social-media/web-info", sp_webInfoRoutes);
+router.use("/social-media/post", sp_postRoutes);
 
 // logo-design module
 router.use("/logo-design/detail", ld_logoDetailRoutes);
