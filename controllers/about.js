@@ -3,7 +3,7 @@ const validation = require("../utils/validations/about");
 const schemaValidate = require("../utils/validations/validate");
 
 async function getSingle(req, res) {
-  const about = await aboutService.getSingleRecord(req.user._id);
+  const about = await aboutService.getSingleRecord(req);
   res.send({ about });
 }
 
