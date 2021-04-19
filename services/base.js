@@ -1,17 +1,17 @@
 const Exceptions = require("../utils/custom_exceptions");
 
-async function getSingle(model, user, recordId) {
-  if (!user.is_admin) {
-    return await model.findOne({ user: user._id }).select("-user");
-  }
+async function getSingle(model, user, id) {
+  let user_id;
 
-  if (!recordId) {
+  user_id = user.is_admin ? id : user._id;
+
+  if (!user_id) {
     throw new Exceptions.BadRequset(
-      "Please provide the id in query param in order to proceed .."
+      "Please provide the user id in query id param in order to proceed .."
     );
   }
 
-  return await model.findOne({ _id: recordId }).select("-user");
+  return await model.findOne({ user: user_id }).select("-user");
 }
 
 module.exports = { getSingle };
