@@ -1,23 +1,28 @@
 const multer = require("multer");
 const { v4: uuidv4 } = require("uuid");
-const config = require("config");
 
-const destination = `uploads`;
-
-const multerStorage = multer.diskStorage({
+const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "public/img/users");
+    cb(null, "./uploads/");
   },
   filename: (req, file, cb) => {
-    console.log("file name run");
-    const id = uuidv4();
-    cb(null, `image`);
+    const filename = uuidv4() + "-" + file.originalname;
+    cb(null, filename);
   },
 });
 
+const fileFilter = async (req, file, cb) => {
+  if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
+    cb(null, true);
+  } else {
+    cb(new Error("Some error"), false);
+  }
+};
+
 const uploads = multer({
-  storage: multerStorage,
+  storage,
+  fileFilter,
+  limits: { fileSize: 1024 * 1024 * 5 },
 });
 
-exports.uploadPhoto = uploads.single("photo");
-// module.exports = uploadImgConfig;
+module.exports = uploads;

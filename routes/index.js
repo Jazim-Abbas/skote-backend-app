@@ -17,4 +17,9 @@ router.use("/company", isAuthMiddleware, companyRoutes);
 router.use("/services", isAuthMiddleware, serviceRoutes);
 router.use("/business", isAuthMiddleware, businessRoutes);
 
+const uploads = require("../utils/upload-image");
+router.post("/image", uploads.single("image"), (req, res) => {
+  res.send({ message: "Done" });
+});
+
 module.exports = router;
