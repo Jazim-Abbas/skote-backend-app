@@ -4,7 +4,7 @@ const { WG_Objective } = require("../../db/service");
 async function fetchSingle(req, res) {
   const objective = await baseService.getSingle(
     WG_Objective,
-    req.user._id,
+    req,
     "web_development"
   );
   res.send({ objective });

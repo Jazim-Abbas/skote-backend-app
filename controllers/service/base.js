@@ -22,7 +22,7 @@ class BaseController {
   async fetchSingle(req, res) {
     const record = await baseService.getSingle(
       this.model,
-      req.user._id,
+      req,
       this.serviceEnroll
     );
 

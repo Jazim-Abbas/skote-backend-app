@@ -1,5 +1,6 @@
 const { WG_Objective, Engage } = require("../../db/service");
 const Exceptions = require("../../utils/custom_exceptions");
+const baseService = require("../base");
 
 async function checkServiceFoundInCheckList(
   user_id,
@@ -15,9 +16,9 @@ async function checkServiceFoundInCheckList(
   return checkList;
 }
 
-async function getSingle(model, user_id, service) {
-  await checkServiceFoundInCheckList(user_id, service);
-  return await model.findOne({ user: user_id }).select("-user");
+async function getSingle(model, req, service) {
+  await checkServiceFoundInCheckList(req.user._id, service);
+  return await baseService.getSingle(model, req.user, req.query.id);
 }
 
 async function store(model, detail, user_id, service) {
