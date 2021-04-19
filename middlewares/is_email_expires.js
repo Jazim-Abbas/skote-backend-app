@@ -7,7 +7,8 @@ module.exports = async function (req, res, next) {
   if (!token) throw new Exception.BadRequset("The token identifier is missing");
 
   try {
-    jwt.verify(token, config.get("jwt.secret"));
+    const decoded = jwt.verify(token, config.get("jwt.secret"));
+    req.user_id = decoded.user_id;
     next();
   } catch (err) {
     throw new Exception.EmailExpire("Email has been expired. Again verify ..");

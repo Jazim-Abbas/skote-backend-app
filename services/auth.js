@@ -26,6 +26,13 @@ exports.login = async function (email, password) {
 exports.isEmailExists = async function (email) {
   const userInDb = await findUserByEmail(email);
   if (!userInDb) throw new Exception.EmailNotExists("Email is not exist");
+  return userInDb;
+};
+
+exports.verifyEmail = async function (userId) {
+  const user = await User.findById(userId);
+  user.isEmailVerified = true;
+  await user.save();
 };
 
 function findUserByEmail(email) {

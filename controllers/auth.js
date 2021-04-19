@@ -35,7 +35,8 @@ async function sendEmailForVerification(req, res) {
 }
 
 async function verifyEmail(req, res) {
-  res.send("success verify email");
+  await authService.verifyEmail(req.user_id);
+  res.send("Your email is verified successfully ...");
 }
 
 module.exports = {

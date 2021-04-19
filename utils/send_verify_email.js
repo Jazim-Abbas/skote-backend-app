@@ -1,12 +1,11 @@
 const mailer = require("./send_email");
 const generateToken = require("./generate_token");
 const Exceptions = require("./custom_exceptions");
+const authService = require("../services/auth");
 
 async function sendVerifyEmail(email) {
-  const token = await generateToken(
-    { data: "email-verify-" + Math.random() },
-    "1d"
-  );
+  const user = await authService.isEmailExists(email);
+  const token = await generateToken({ user_id: user._id }, "1d");
 
   try {
     await mailer.sendMail({
