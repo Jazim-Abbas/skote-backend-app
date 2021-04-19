@@ -3,7 +3,7 @@ const schemaValidate = require("../../utils/validations/validate");
 const introductionService = require("../../services/business/introduction");
 
 async function fetchSingle(req, res) {
-  const introRecord = await introductionService.getSingle(req.user._id);
+  const introRecord = await introductionService.getSingle(req);
   res.send({ introduction: introRecord });
 }
 
