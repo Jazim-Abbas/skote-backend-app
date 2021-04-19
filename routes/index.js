@@ -7,9 +7,10 @@ const companyRoutes = require("./company");
 const serviceRoutes = require("./service");
 const businessRoutes = require("./business");
 const isAuthMiddleware = require("../middlewares/is_auth");
+const isAdminMiddleware = require("../middlewares/is_admin");
 
 const router = express.Router();
-router.use("/user", isAuthMiddleware, userRoutes);
+router.use("/user", isAuthMiddleware, isAdminMiddleware, userRoutes);
 router.use("/auth", authRoutes);
 router.use("/about", isAuthMiddleware, aboutRoutes);
 router.use("/company", isAuthMiddleware, companyRoutes);
