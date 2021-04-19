@@ -3,7 +3,7 @@ const validation = require("../../utils/validations/target_market");
 const targetMarketService = require("../../services/business/target_market");
 
 async function fetchSingle(req, res) {
-  const targetMarket = await targetMarketService.getSingle(req.user._id);
+  const targetMarket = await targetMarketService.getSingle(req);
   res.send({ targetMarket });
 }
 
