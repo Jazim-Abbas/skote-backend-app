@@ -59,6 +59,12 @@ class BadRequset extends HttpError {
   }
 }
 
+class EmailExpire extends HttpError {
+  constructor(message) {
+    super(message, 406, "EMAIL_EXPIRE");
+  }
+}
+
 module.exports = {
   HttpError,
   EmailExist,
@@ -69,4 +75,5 @@ module.exports = {
   LoginFailed,
   EmailNotExists,
   BadRequset,
+  EmailExpire,
 };

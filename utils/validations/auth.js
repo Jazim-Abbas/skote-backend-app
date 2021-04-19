@@ -16,8 +16,13 @@ const passwordForgetSchema = yup.object().shape({
   email: yup.string().email().required(),
 });
 
+const sendEmailSchema = yup.object().shape({
+  email: yup.string().email().required(),
+});
+
 module.exports = {
   registerSchema,
   loginSchema,
   passwordForgetSchema,
+  sendEmailSchema,
 };

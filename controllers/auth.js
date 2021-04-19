@@ -29,8 +29,13 @@ async function passwordForget(req, res) {
 }
 
 async function sendEmailForVerification(req, res) {
-  await sendVerifyEmail(req.body.email);
+  const { email } = await schemaValidate(validation.sendEmailSchema, req.body);
+  await sendVerifyEmail(email);
   res.send({ message: "Check your email to verify ..." });
+}
+
+async function verifyEmail(req, res) {
+  res.send("success verify email");
 }
 
 module.exports = {
@@ -38,4 +43,5 @@ module.exports = {
   login,
   passwordForget,
   sendEmailForVerification,
+  verifyEmail,
 };
