@@ -3,7 +3,7 @@ const schemaValidate = require("../../utils/validations/validate");
 const competitorService = require("../../services/business/competitor");
 
 async function fetchSingle(req, res) {
-  const competitor = await competitorService.getSingle(req.user._id);
+  const competitor = await competitorService.getSingle(req);
   res.send({ competitor });
 }
 

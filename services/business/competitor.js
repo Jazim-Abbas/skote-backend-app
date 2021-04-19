@@ -1,8 +1,9 @@
 const Competitor = require("../../db/competitor");
 const Exceptions = require("../../utils/custom_exceptions");
+const baseService = require("../base");
 
-async function getSingle(user_id) {
-  return await Competitor.findOne({ user: user_id }).select("-user");
+async function getSingle(req) {
+  return await baseService.getSingle(Competitor, req.user, req.query.id)
 }
 
 async function store(detail, user_id) {
