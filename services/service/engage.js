@@ -1,8 +1,9 @@
 const { Engage } = require("../../db/service");
 const Exceptions = require("../../utils/custom_exceptions");
+const baseService = require("../base");
 
-async function getSingle(user_id) {
-  return await Engage.findOne({ user: user_id }).select("-user");
+async function getSingle(req) {
+  return await baseService.getSingle(Engage, req.user, req.query.id);
 }
 
 async function store(detail, user_id) {

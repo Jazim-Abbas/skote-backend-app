@@ -3,7 +3,7 @@ const schemaValidate = require("../../utils/validations/validate");
 const engageService = require("../../services/service/engage");
 
 async function fetchSingle(req, res) {
-  const checkList = await engageService.getSingle(req.user._id);
+  const checkList = await engageService.getSingle(req);
   res.send({ checkList });
 }
 
