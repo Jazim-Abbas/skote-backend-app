@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
+const { pick } = require("underscore");
 
 const generateToken = require("../utils/generate_token");
 
@@ -45,7 +46,14 @@ userSchema.method("comparePassword", async function (password) {
 });
 
 userSchema.method("generateToken", async function () {
-  const payload = { _id: this._id, name: this.name, email: this.email };
+  const payload = pick(
+    this,
+    "_id",
+    "name",
+    "email",
+    "is_admin",
+    "isEmailVerified"
+  );
   return await generateToken(payload);
 });
 
