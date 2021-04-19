@@ -1,8 +1,9 @@
 const Company = require("../db/company");
 const Exceptions = require("../utils/custom_exceptions");
+const baseService = require("./base");
 
-async function getSingle(user_id) {
-  return await Company.findOne({ user: user_id }).select("-user");
+async function getSingle(req) {
+  return await baseService.getSingle(Company, req.user, req.query.id);
 }
 
 async function save(company, user_id) {
