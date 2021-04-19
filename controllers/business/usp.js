@@ -3,7 +3,7 @@ const validation = require("../../utils/validations/usp");
 const schemaValidate = require("../../utils/validations/validate");
 
 async function fetchSingle(req, res) {
-  const record = await uspService.getSingle(req.user._id);
+  const record = await uspService.getSingle(req);
   res.send({ usp: record });
 }
 

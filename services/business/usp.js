@@ -1,8 +1,9 @@
 const USP = require("../../db/usp");
 const Exceptions = require("../../utils/custom_exceptions");
+const baseService = require("../base");
 
-async function getSingle(user_id) {
-  return await USP.findOne({ user: user_id }).select("-user");
+async function getSingle(req) {
+  return await baseService.getSingle(USP, req.user, req.query.id);
 }
 
 async function store(detail, user_id) {
