@@ -13,7 +13,6 @@ const transport = nodemailer.createTransport({
 });
 
 function sendMail(configs) {
-  console.log(configs);
   return transport.sendMail({
     ...configs,
   });
