@@ -29,6 +29,7 @@ const SP_Post = require("./social-media/posting");
 
 // logo-design module
 const LD_LogoDetail = require("./logo-design/logo_detail");
+const LD_UploadLogo = require("./logo-design/upload_logo");
 
 module.exports = {
   Engage,
@@ -62,4 +63,5 @@ module.exports = {
 
   // logo-design module
   LD_LogoDetail,
+  LD_UploadLogo,
 };

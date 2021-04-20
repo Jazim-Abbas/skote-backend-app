@@ -30,6 +30,7 @@ const sp_postRoutes = require("./social-media/posting");
 
 // logo-design module
 const ld_logoDetailRoutes = require("./logo-design/logo_detail");
+const ld_uploadLogoRoutes = require("./logo-design/upload_logo");
 
 const router = express.Router();
 router.use("/wg-goal", webGoalRoutes);
@@ -63,5 +64,6 @@ router.use("/social-media/post", sp_postRoutes);
 
 // logo-design module
 router.use("/logo-design/detail", ld_logoDetailRoutes);
+router.use("/logo-design/upload-logo", ld_uploadLogoRoutes);
 
 module.exports = router;
