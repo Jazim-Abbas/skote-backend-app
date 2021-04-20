@@ -6,7 +6,7 @@ const router = express.Router();
 router
   .post("/", uploads.single("logo"), companyController.save)
   .get("/", companyController.getSingle)
-  .patch("/:id", companyController.update)
+  .patch("/:id", uploads.single("logo"), companyController.update)
   .delete("/:id", companyController.destroy);
 
 module.exports = router;

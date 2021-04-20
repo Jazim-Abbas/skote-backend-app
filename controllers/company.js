@@ -17,6 +17,8 @@ async function save(req, res) {
 
 async function update(req, res) {
   const fields = await schemaValidate(validation.companySchema, req.body);
+  fields.logo = req.file ? req.file.path : req.body.logo;
+  
   const company = await companyService.update(fields, req.params.id);
   res.send({ company });
 }
