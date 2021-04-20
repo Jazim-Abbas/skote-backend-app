@@ -1,9 +1,10 @@
 const express = require("express");
 const companyController = require("../controllers/company");
+const uploads = require("../utils/upload-image");
 
 const router = express.Router();
 router
-  .post("/", companyController.save)
+  .post("/", uploads.single("logo"), companyController.save)
   .get("/", companyController.getSingle)
   .patch("/:id", companyController.update)
   .delete("/:id", companyController.destroy);

@@ -8,7 +8,9 @@ async function getSingle(req, res) {
 }
 
 async function save(req, res) {
-  const fields = await schemaValidate(validation.companySchema, req.body);
+  let fields = await schemaValidate(validation.companySchema, req.body);
+  fields.logo = req.file ? req.file.path : "";
+
   const company = await companyService.save(fields, req.user._id);
   res.send({ company });
 }
