@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 require("express-async-errors");
 const bodyParser = require("body-parser");
+const multer = require("multer");
 
 const routes = require("./routes");
 require("./utils/check_env_vars")();
@@ -11,6 +12,7 @@ const exceptionHandling = require("./middlewares/exception_handling");
 dbConnect();
 const app = express();
 
+app.use(multer().array());
 app.use("/uploads", express.static("uploads"));
 app.use(cors({ origin: "http://localhost:3000" }));
 app.use(bodyParser.json());

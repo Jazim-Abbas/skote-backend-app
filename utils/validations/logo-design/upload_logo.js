@@ -1,12 +1,12 @@
 const yup = require("yup");
 
 const uploadLogoSchema = yup.object().shape({
-  likes_logo: yup.array().min(3).of(yup.string().url().required()).required(),
-  dislikes_logo: yup
+  likes_url: yup.array().min(3).of(yup.string().url().required()).notRequired(),
+  dislikes_url: yup
     .array()
     .min(3)
     .of(yup.string().url().required())
-    .required(),
+    .notRequired(),
 });
 
 module.exports = { uploadLogoSchema };
