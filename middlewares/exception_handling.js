@@ -6,6 +6,8 @@ module.exports = function (err, req, res, next) {
   let name = "SERVER_ERROR";
   let errors = [];
 
+  console.log("ex handling", err);
+
   if (err instanceof Exception.HttpError) {
     if (err instanceof Exception.ValidationError) {
       errors = err.errors;

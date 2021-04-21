@@ -19,6 +19,7 @@ router.use("/business", isAuthMiddleware, businessRoutes);
 
 const uploads = require("../utils/upload-image");
 router.post("/image", uploads.single("image"), (req, res) => {
+  console.log("file", req.file);
   res.send({ message: "Done" });
 });
 

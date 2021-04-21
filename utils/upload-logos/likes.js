@@ -14,7 +14,18 @@ const storage = multer.diskStorage({
 });
 
 const fileFilter = async (req, file, cb) => {
-  return cb(null, true);
+  const fields = req.body;
+
+  console.log("inside file filter", req.body);
+  console.log("inside file filter", file);
+
+  if (fields.likes_url) {
+    return cb(null, false);
+  }
+
+  console.log("inside file filter likes_url field is missing");
+
+  return cb(null, false);
 
   if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
     try {

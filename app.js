@@ -12,7 +12,7 @@ const exceptionHandling = require("./middlewares/exception_handling");
 dbConnect();
 const app = express();
 
-app.use(multer().array());
+// app.use(multer().array());
 app.use("/uploads", express.static("uploads"));
 app.use(cors({ origin: "http://localhost:3000" }));
 app.use(bodyParser.json());
