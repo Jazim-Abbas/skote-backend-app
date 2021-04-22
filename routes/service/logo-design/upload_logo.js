@@ -38,8 +38,22 @@ router.post(
       logo_dislikes.push(file.path);
     });
 
-    console.log("logo likes", logo_likes);
-    console.log("logo dislikes", logo_dislikes);
+    // console.log("logo likes", logo_likes);
+    // console.log("logo dislikes", logo_dislikes);
+
+    const all_files = [];
+
+    for (let prop in files) {
+      if (Array.isArray(files[prop])) {
+        files[prop].forEach((file) => {
+          all_files.push(file.path);
+        });
+      } else {
+        all_files.push(files[prop].path);
+      }
+    }
+
+    console.log("all files", all_files);
 
     res.send({ message: "done" });
 
