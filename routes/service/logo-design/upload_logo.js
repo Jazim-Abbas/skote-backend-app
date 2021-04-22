@@ -27,16 +27,9 @@ router.post(
   ]),
   async (req, res) => {
     const files = req.files;
-    const logo_likes = [];
-    const logo_dislikes = [];
 
-    files.logo_likes.forEach((file) => {
-      logo_likes.push(file.path);
-    });
-
-    files.logo_dislikes.forEach((file) => {
-      logo_dislikes.push(file.path);
-    });
+    const _fields = mapFilePathToData(req);
+    console.log("fields", _fields);
 
     // console.log("logo likes", logo_likes);
     // console.log("logo dislikes", logo_dislikes);
@@ -71,6 +64,27 @@ router.delete("/:id", (req, res) => {
 });
 
 module.exports = router;
+
+function mapFilePathToData(req) {
+  const files = req.files;
+  const fields = {
+    logo: "",
+    logo_likes: [],
+    logo_dislikes: [],
+  };
+
+  // fields.logo = files.logo;
+
+  files.logo_likes.forEach((file) => {
+    fields.logo_likes.push(file.path);
+  });
+
+  files.logo_dislikes.forEach((file) => {
+    fields.logo_dislikes.push(file.path);
+  });
+
+  return fields;
+}
 
 function appendFieldsData(req, fields) {
   let _fields = {};
