@@ -19,17 +19,35 @@ const baseController = new BaseController(
 router.get("/", (req, res) => {
   return baseController.fetchSingle(req, res);
 });
-router.post("/", multiUpload.array("likes_logo", 3), async (req, res) => {
-  const fields = await schemaValidate(validation.uploadLogoSchema, req.body);
+router.post(
+  "/",
+  multiUpload.fields([
+    { name: "logo_likes", maxCount: 3 },
+    { name: "logo_dislikes", maxCount: 3 },
+  ]),
+  async (req, res) => {
+    const files = req.files;
+    const logo_likes = [];
+    const logo_dislikes = [];
 
-  const _fields = appendFieldsData(req, fields);
+    files.logo_likes.forEach((file) => {
+      logo_likes.push(file.path);
+    });
 
-  res.send({ fields: _fields });
+    files.logo_dislikes.forEach((file) => {
+      logo_dislikes.push(file.path);
+    });
 
-  // actual implementation
-  // req.body.logo = req.file.path;
-  // return baseController.store(req, res);
-});
+    console.log("logo likes", logo_likes);
+    console.log("logo dislikes", logo_dislikes);
+
+    res.send({ message: "done" });
+
+    // actual implementation
+    // req.body.logo = req.file.path;
+    // return baseController.store(req, res);
+  }
+);
 router.patch("/:id", uploads.single("logo"), (req, res) => {
   req.body.logo = req.file ? req.file.path : req.body.logo;
   return baseController.update(req, res);
