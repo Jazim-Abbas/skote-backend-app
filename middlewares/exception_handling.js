@@ -7,8 +7,7 @@ module.exports = async function (err, req, res, next) {
   let name = "SERVER_ERROR";
   let errors = [];
 
-
-
+  await removeFileIfExists(req.files);
   console.log("ex handling", err);
 
   if (err instanceof Exception.HttpError) {
@@ -26,20 +25,21 @@ module.exports = async function (err, req, res, next) {
 async function removeFileIfExists(files) {
   if (!files) return;
 
-  const _files = Object.keys(files);
-  console.log(_files);
+  const all_files = [];
 
-  for (let key = 0; key < files.length; key++) {
-    console.log(files[key]);
-    if (Array.isArray(files[key])) {
-      for (let i = 0; i < files[key].length; i++) {
-        console.log("path", files[key][i].path);
-        try {
-          await fs.unlink(files[key][i].path);
-        } catch (ex) {
-          console.log("inside remove file some error");
-        }
-      }
+  for (let prop in files) {
+    if (Array.isArray(files[prop])) {
+      files[prop].forEach((file) => {
+        all_files.push(file.path);
+      });
+    } else {
+      all_files.push(files[prop].path);
     }
+  }
+
+  for (let i = 0; i < all_files.length; i++) {
+    try {
+      await fs.unlink(all_files[i]);
+    } catch (err) {}
   }
 }

@@ -2,9 +2,9 @@ const { WG_Objective, Engage } = require("../../db/service");
 const Exceptions = require("../../utils/custom_exceptions");
 const baseService = require("../base");
 
-async function checkServiceFoundInCheckList(req, service = "web_development") {
-  const { user } = req;
-  const user_id = user.is_admin ? req.query.id : user._id;
+async function checkServiceFoundInCheckList(user_id, service = "web_development") {
+  // const { user } = req;
+  // const user_id = user.is_admin ? req.query.id : user._id;
 
   const checkList = await Engage.findOne({ user: user_id, services: service });
 

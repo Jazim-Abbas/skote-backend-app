@@ -7,6 +7,7 @@ const isLogoExist = require("../../../middlewares/is_logo_exist");
 
 const schemaValidate = require("../../../utils/validations/validate");
 const multiUpload = require("../../../utils/upload-logos/likes");
+const baseService = require("../../../services/service/base");
 
 const router = express.Router();
 const baseController = new BaseController(
@@ -24,31 +25,19 @@ router.post(
   multiUpload.fields([
     { name: "logo_likes", maxCount: 3 },
     { name: "logo_dislikes", maxCount: 3 },
+    { name: "logo", maxCount: 1 },
   ]),
   async (req, res) => {
-    const files = req.files;
+    const fields = mapFilePathToData(req);
 
-    const _fields = mapFilePathToData(req);
-    console.log("fields", _fields);
+    const record = await baseService.store(
+      LD_UploadLogo,
+      fields,
+      req.user._id,
+      "logo_creation"
+    );
 
-    // console.log("logo likes", logo_likes);
-    // console.log("logo dislikes", logo_dislikes);
-
-    const all_files = [];
-
-    for (let prop in files) {
-      if (Array.isArray(files[prop])) {
-        files[prop].forEach((file) => {
-          all_files.push(file.path);
-        });
-      } else {
-        all_files.push(files[prop].path);
-      }
-    }
-
-    console.log("all files", all_files);
-
-    res.send({ message: "done" });
+    res.send({ record });
 
     // actual implementation
     // req.body.logo = req.file.path;
@@ -73,7 +62,7 @@ function mapFilePathToData(req) {
     logo_dislikes: [],
   };
 
-  // fields.logo = files.logo;
+  fields.logo = files.logo.path;
 
   files.logo_likes.forEach((file) => {
     fields.logo_likes.push(file.path);
