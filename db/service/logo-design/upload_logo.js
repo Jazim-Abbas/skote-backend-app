@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 
 const schema = new mongoose.Schema({
   logo: String,
-  likes_logo: [String],
-  dislikes_logo: [String],
+  logo_likes: [String],
+  logo_dislikes: [String],
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",

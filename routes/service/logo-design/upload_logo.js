@@ -38,10 +38,6 @@ router.post(
     );
 
     res.send({ record });
-
-    // actual implementation
-    // req.body.logo = req.file.path;
-    // return baseController.store(req, res);
   }
 );
 router.patch("/:id", uploads.single("logo"), (req, res) => {
@@ -62,7 +58,7 @@ function mapFilePathToData(req) {
     logo_dislikes: [],
   };
 
-  fields.logo = files.logo.path;
+  fields.logo = files.logo[0].path;
 
   files.logo_likes.forEach((file) => {
     fields.logo_likes.push(file.path);
@@ -74,25 +70,3 @@ function mapFilePathToData(req) {
 
   return fields;
 }
-
-function appendFieldsData(req, fields) {
-  let _fields = {};
-
-  if (fields.likes_url) {
-    _fields.is_logo_like_img = false;
-    _fields.logo_likes = fields.likes_url;
-  } else {
-    _fields.is_logo_like_img = true;
-  }
-
-  if (fields.dislikes_url) {
-    _fields.is_logo_dislike_img = false;
-    _fields.logo_dislikes = fields.dislikes_url;
-  } else {
-    _fields.is_logo_dislike_img = true;
-  }
-
-  return _fields;
-}
-
-// uploads.single("logo"), isLogoExist,
