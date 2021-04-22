@@ -8,6 +8,7 @@ const isLogoExist = require("../../../middlewares/is_logo_exist");
 const schemaValidate = require("../../../utils/validations/validate");
 const multiUpload = require("../../../utils/upload-logos/likes");
 const baseService = require("../../../services/service/base");
+const validateUploadLogo = require("../../../middlewares/validate_upload_logo");
 
 const router = express.Router();
 const baseController = new BaseController(
@@ -27,6 +28,7 @@ router.post(
     { name: "logo_dislikes", maxCount: 3 },
     { name: "logo", maxCount: 1 },
   ]),
+  validateUploadLogo,
   async (req, res) => {
     const fields = mapFilePathToData(req);
 
