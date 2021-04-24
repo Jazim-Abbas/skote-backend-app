@@ -1,4 +1,4 @@
-const Exceptions = require("../utils/custom_exceptions");
+const Exceptions = require("../../utils/custom_exceptions");
 
 module.exports = function (req, res, next) {
   const files = req.files;
