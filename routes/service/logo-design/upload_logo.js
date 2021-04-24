@@ -9,7 +9,7 @@ const schemaValidate = require("../../../utils/validations/validate");
 const multiUpload = require("../../../utils/upload-logos/likes");
 const baseService = require("../../../services/service/base");
 const validateUploadLogo = require("../../../middlewares/upload-files/validate_upload_logo");
-const validateUploadLogoForUpdate = require("../../../middlewares/upload-files/validate_upload_logo_for_update");
+const deleteUploadFiles = require("../../../middlewares/upload-files/delete_uploaded_files");
 
 const router = express.Router();
 const baseController = new BaseController(
@@ -50,7 +50,8 @@ router.patch(
     { name: "logo_dislikes", maxCount: 3 },
     { name: "logo", maxCount: 1 },
   ]),
-  validateUploadLogoForUpdate,
+  validateUploadLogo,
+  deleteUploadFiles,
   async (req, res) => {
     const fields = mapFilePathToData(req);
 
